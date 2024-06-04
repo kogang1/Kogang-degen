@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Price Checker</title>
+</head>
+<body>
+    <button onclick="fetchPrices()">Get Prices</button>
+    <div id="prices"></div>
+
+    <script>
+        async function fetchPrices() {
+            const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=degen,suprare&vs_currencies=usd');
+            const data = await response.json();
+            document.getElementById('prices').innerHTML = `
+                DEGEN: $${data.degen.usd}<br>
+                SUPERRARE: $${data.suprare.usd}
+            `;
+        }
+    </script>
+</body>
+</html>
